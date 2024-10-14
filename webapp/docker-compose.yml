@@ -5,6 +5,9 @@ services:
     volumes:
       - ./etc/nginx/conf.d:/etc/nginx/conf.d
       - ./public:/public
+      # dockerのログをローカルに出力する
+      # コマンド例：cat nginx_logs/access.log | grep -v ' - - ' | alp json  --matching-groups="/image/[0-9]+\.(jpg|png),/favicon\.ico,.*\.js"
+      - ./nginx_logs:/var/log/nginx
     ports:
       - "80:80"
     networks:
